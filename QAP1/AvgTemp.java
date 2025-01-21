@@ -1,6 +1,7 @@
+package QAP1;
 
 public class AvgTemp{
-    public static double CalcAverageTemp(double[] temperatures){
+    public static double calcAverageTemp(double[] temperatures){
         double sum = 0;
         for (double temp : temperatures){
             sum += temp;
