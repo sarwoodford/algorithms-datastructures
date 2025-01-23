@@ -1,6 +1,7 @@
 package QAP2;
 
 import java.util.Scanner;
+import java.util.LinkedList;
 public class MovieTheatre {
 
     public static void displayMenu(){
@@ -87,12 +88,17 @@ public class MovieTheatre {
     public static void viewSeatingChart(){
         System.out.println("Current seating chart: ");
         for (int i = 0; i < 15; i++){
-            for (int j = 0; j < 15; j++){
-                System.out.println(seatsAvailable[i][j] ? "[✓] " : "[ ] ");
+            System.out.print("Row " + (i+1) + ": ");  
+    
+            for(int j = 0; j < 15; j++){
+                System.out.print(seatsAvailable[i][j] ? "[✓] " : "[ ] ");  
             }
-            System.out.println();
+    
+            System.out.println(); 
         }
     }
+    
+    
 
     public static void main(String[] args){
         displayMenu();
