@@ -43,9 +43,9 @@ public class MovieTheatre {
     public static void reserveSeats(Scanner scanner){
         while(true){
             System.out.println("Please enter the row number you wish to sit in (1-15): ");
-            int rowSelected = scanner.nextInt();
+            int rowSelected = scanner.nextInt() -1;
             System.out.println("Please enter the seat number you wish to sit in (1-15): ");
-            int seatSelected = scanner.nextInt();
+            int seatSelected = scanner.nextInt() -1;
     
             if(rowSelected >= 0 && rowSelected < 15 && 
             seatSelected >=0 && seatSelected < 15){
@@ -65,9 +65,9 @@ public class MovieTheatre {
     public static void cancelSeats(Scanner scanner){
         while(true){
             System.out.println("Please enter the row number you wish to sit in (1-15): ");
-            int rowSelected = scanner.nextInt();
+            int rowSelected = scanner.nextInt() -1;
             System.out.println("Please enter the seat number you wish to sit in (1-15): ");
-            int seatSelected = scanner.nextInt();
+            int seatSelected = scanner.nextInt() -1;
     
             if(rowSelected >= 0 && rowSelected < 15 && 
             seatSelected >=0 && seatSelected < 15){
@@ -85,7 +85,17 @@ public class MovieTheatre {
     }
 
     public static void viewSeatingChart(){
+        System.out.println("Current seating chart: ");
+        for (int i = 0; i < 15; i++){
+            for (int j = 0; j < 15; j++){
+                System.out.println(seatsAvailable[i][j] ? "[✓] " : "[ ] ");
+            }
+            System.out.println();
+        }
+    }
 
+    public static void main(String[] args){
+        displayMenu();
     }
 }
 
