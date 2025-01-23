@@ -2,7 +2,9 @@ package QAP2;
 
 import java.util.Scanner;
 public class MovieTheatre {
+
     public static void displayMenu(){
+
 
         try (Scanner scanner = new Scanner(System.in)) {
             while(true){
@@ -36,8 +38,25 @@ public class MovieTheatre {
         }
     }
 
-    public static void reserveSeats(Scanner scanner){
+    private static boolean[][] seatsAvailable = new boolean[15][15];
 
+    public static void reserveSeats(Scanner scanner){
+        System.out.println("Please enter the row number you wish to sit in (1-15): ");
+        int rowSelected = scanner.nextInt();
+        System.out.println("Please enter the seat number you wish to sit in (1-15): ");
+        int seatSelected = scanner.nextInt();
+
+        if(rowSelected >= 0 && rowSelected < 15 && 
+        seatSelected >=0 && seatSelected < 15){
+            if(seatsAvailable[rowSelected][seatSelected]){
+                System.out.println("Oops! This seat is taken, please choose a new seat.");
+            } else {
+                seatsAvailable[rowSelected][seatSelected] = true;
+                System.out.println("Your seat has been reserved! See you soon!");
+            }
+        } else {
+            System.out.println("Invalid seat number entered. Please re-enter your desired seat.");
+        }
     }
 
     public static void cancelSeats(Scanner scanner){
