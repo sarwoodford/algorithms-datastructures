@@ -41,26 +41,47 @@ public class MovieTheatre {
     private static boolean[][] seatsAvailable = new boolean[15][15];
 
     public static void reserveSeats(Scanner scanner){
-        System.out.println("Please enter the row number you wish to sit in (1-15): ");
-        int rowSelected = scanner.nextInt();
-        System.out.println("Please enter the seat number you wish to sit in (1-15): ");
-        int seatSelected = scanner.nextInt();
-
-        if(rowSelected >= 0 && rowSelected < 15 && 
-        seatSelected >=0 && seatSelected < 15){
-            if(seatsAvailable[rowSelected][seatSelected]){
-                System.out.println("Oops! This seat is taken, please choose a new seat.");
+        while(true){
+            System.out.println("Please enter the row number you wish to sit in (1-15): ");
+            int rowSelected = scanner.nextInt();
+            System.out.println("Please enter the seat number you wish to sit in (1-15): ");
+            int seatSelected = scanner.nextInt();
+    
+            if(rowSelected >= 0 && rowSelected < 15 && 
+            seatSelected >=0 && seatSelected < 15){
+                if(seatsAvailable[rowSelected][seatSelected]){
+                    System.out.println("Oops! This seat is taken, please choose a new seat.");
+                } else {
+                    seatsAvailable[rowSelected][seatSelected] = true;
+                    System.out.println("Your seat has been reserved! See you soon!");
+                }
             } else {
-                seatsAvailable[rowSelected][seatSelected] = true;
-                System.out.println("Your seat has been reserved! See you soon!");
+                System.out.println("Invalid seat number entered. Please re-enter your desired seat.");
             }
-        } else {
-            System.out.println("Invalid seat number entered. Please re-enter your desired seat.");
+        break;
         }
     }
 
     public static void cancelSeats(Scanner scanner){
-
+        while(true){
+            System.out.println("Please enter the row number you wish to sit in (1-15): ");
+            int rowSelected = scanner.nextInt();
+            System.out.println("Please enter the seat number you wish to sit in (1-15): ");
+            int seatSelected = scanner.nextInt();
+    
+            if(rowSelected >= 0 && rowSelected < 15 && 
+            seatSelected >=0 && seatSelected < 15){
+                if(!seatsAvailable[rowSelected][seatSelected]){
+                    System.out.println("That seat isn't currently reserved, please review your reservation and enter the correct seat.");
+                } else {
+                    seatsAvailable[rowSelected][seatSelected] = false;
+                    System.out.println("Your reservation was cancelled ): Hope to see you soon!");
+                }
+            } else {
+                System.out.println("Invalid seat number entered. Please re-enter your reserved seat.");
+            }
+        break;
+        }
     }
 
     public static void viewSeatingChart(){
