@@ -17,9 +17,18 @@ public class UndoRedo<T> {
     }
 
     //Undo operation
+    /**
+     * move currentState back to the previous state in the list
+     * 
+     * @return state of the new current node
+     */
     public T undo(){
     //implement me
-
+        if (currentState == null || currentState.prev == null) {
+            throw new Error("No states left in the list to undo.");
+        }
+        currentState = currentState.prev;
+        return currentState.state;
     }
     
     //perform an operation
@@ -45,8 +54,17 @@ public class UndoRedo<T> {
     }
     
     //Redo Operation
+    /** move currentState forward to the next state in the list
+     * 
+     * @return state of the new current node
+     */
     public T redo(){
         //implement me
+        if (currentState == null || currentState.next == null) {
+            throw new Error("No states left in the list to redo.");
+        }
+        currentState = currentState.next;
+        return currentState.state;
     }
     
     public static void main(String[] args) {
