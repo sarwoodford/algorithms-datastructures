@@ -68,7 +68,15 @@ public class UndoRedo<T> {
     }
     
     public static void main(String[] args) {
-    
+        UndoRedo<String> manager = new UndoRedo<>();
+
+        manager.addState("State 1");
+        manager.addState("State 2");
+        manager.addState("State 3");
+
+        manager.undo();
+
+        manager.redo();
     
     }
 }
