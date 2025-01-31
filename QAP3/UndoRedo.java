@@ -61,22 +61,33 @@ public class UndoRedo<T> {
     public T redo(){
         //implement me
         if (currentState == null || currentState.next == null) {
-            throw new Error("No states left in the list to redo.");
+            throw new RuntimeException("No states left in the list to redo.");
         }
         currentState = currentState.next;
+        return currentState.state;
+    }
+
+    public T getCurrentState(){
+        if (currentState == null) {
+            throw new RuntimeException("No states available");
+        }
+
         return currentState.state;
     }
     
     public static void main(String[] args) {
         UndoRedo<String> manager = new UndoRedo<>();
 
-        manager.addState("State 1");
-        manager.addState("State 2");
-        manager.addState("State 3");
+        manager.addState("state 1");
+        manager.addState("state 2");
+        manager.addState("state 3");
+
+        System.out.println(manager.getCurrentState());
 
         manager.undo();
+        System.out.println(manager.getCurrentState());
 
         manager.redo();
-    
+        System.out.println(manager.getCurrentState());
     }
 }
