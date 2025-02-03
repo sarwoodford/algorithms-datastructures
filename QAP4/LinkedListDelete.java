@@ -17,6 +17,13 @@ public class LinkedListDelete<T>{
         this.head = null;
     }
 
+    /**
+     * add list item, if list is empty, new item becomes head. if
+     * list is not empty, item gets added to existing list
+     * 
+     * @param listItem
+     * @return listItem
+     */
     public T addListItem(T listItem){
         Node newItem = new Node(listItem);
 
@@ -34,6 +41,11 @@ public class LinkedListDelete<T>{
         return listItem;
     }
 
+    /**
+     * error is displayed if list is empty
+     * 
+     * @return null
+     */
     public T errorIfDoesntExist(){
         if (head == null){
             System.out.println("List is empty.");
@@ -43,6 +55,12 @@ public class LinkedListDelete<T>{
         return null;
     }
 
+    /**
+     * deletes the head, or displays an error if the list
+     * is empty
+     * 
+     * @return data
+     */
     public T deleteAtBeginning(){
         if (head == null){
             return errorIfDoesntExist();
@@ -52,6 +70,13 @@ public class LinkedListDelete<T>{
         return data;
     }
 
+    /**
+     * deletes an item at the end of the list, displays an 
+     * error if the list is empty. if only one list item is
+     * in the list, the head is deleted
+     * 
+     * @return data
+     */
     public T deleteAtEnd(){
         if (head == null){
             return errorIfDoesntExist();
@@ -74,6 +99,13 @@ public class LinkedListDelete<T>{
         return data;
     }
 
+    /**
+     * deletes a list item anywhere in the list, user can specify which item
+     * they want deleted. error is thrown if list is empty
+     * 
+     * @param item
+     * @return data
+     */
     public T deleteAnywhere(T item){
         if ( head == null){
             return errorIfDoesntExist();
@@ -98,6 +130,10 @@ public class LinkedListDelete<T>{
         return data;
     }
 
+    /**
+     * displays list
+     * 
+     */
     public void showList(){
         Node current = head;
         while (current!=null){
