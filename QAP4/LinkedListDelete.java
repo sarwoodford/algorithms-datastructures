@@ -17,6 +17,23 @@ public class LinkedListDelete<T>{
         this.head = null;
     }
 
+    public T addListItem(T listItem){
+        Node newItem = new Node(listItem);
+
+        if (head == null){
+            head = newItem;
+        } else{
+            Node current = head;
+            while( current.next != null ){
+                current = current.next;
+            }
+
+            current.next = newItem;
+        }
+
+        return listItem;
+    }
+
     public T errorIfDoesntExist(){
         if (head == null){
             System.out.println("List is empty.");
@@ -81,7 +98,44 @@ public class LinkedListDelete<T>{
         return data;
     }
 
-    public static void main(String[] args){
+    public void showList(){
+        Node current = head;
+        while (current!=null){
+            System.out.println(current.listItem + " ");
+            current = current.next;
+        }
 
+        System.out.println();
+    }
+
+    public static void main(String[] args){
+        LinkedListDelete<Integer> list = new LinkedListDelete<>();
+
+        list.showList();
+        list.deleteAtBeginning();
+        list.deleteAtEnd();
+
+        list.addListItem(10);
+        list.addListItem(7);
+        list.addListItem(13);
+        list.addListItem(4);
+
+        list.showList();
+        list.deleteAtBeginning();
+        list.showList();
+        list.deleteAtEnd();
+        list.showList();
+        list.deleteAnywhere(1);
+        list.showList();
     }
 }
+
+
+
+
+
+
+
+
+
+
